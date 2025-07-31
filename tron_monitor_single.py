@@ -83,15 +83,15 @@ class TronTransferBot:
         return None
 
     def transfer_trx(self, slave_balance):
-        """Перевод TRX со slave на master аккаунт (оставляем 1.21 TRX)"""
+        """Перевод TRX со slave на master аккаунт (оставляем 0.81 TRX)"""
         try:
-            amount_to_transfer = slave_balance - 1.21
+            amount_to_transfer = slave_balance - 0.81
 
             if amount_to_transfer <= 0:
                 print(f"❌ Недостаточно средств для перевода (баланс: {slave_balance:.6f} TRX)")
                 return False, None
 
-            print(f"💸 Перевод {amount_to_transfer:.6f} TRX (оставляем 1.21 TRX на балансе)...")
+            print(f"💸 Перевод {amount_to_transfer:.6f} TRX (оставляем 0.81 TRX на балансе)...")
 
             # Для транзакций также используем первый рабочий узел
             for node in self.alternative_nodes:
@@ -153,10 +153,10 @@ class TronTransferBot:
 
         print(f"💰 Баланс slave: {slave_balance:.6f} TRX")
 
-        # Если баланс больше 2 TRX (чтобы можно было оставить 1.21), выполняем перевод
+        # Если баланс больше 2 TRX (чтобы можно было оставить 0.81), выполняем перевод
         if slave_balance > 2.0:
-            transfer_amount = slave_balance - 1.21
-            print(f"🎯 Баланс позволяет перевод {transfer_amount:.6f} TRX (оставляем 1.21 TRX)")
+            transfer_amount = slave_balance - 0.81
+            print(f"🎯 Баланс позволяет перевод {transfer_amount:.6f} TRX (оставляем 0.81 TRX)")
 
             success, txid = self.transfer_trx(slave_balance)
             if success:
@@ -174,7 +174,7 @@ class TronTransferBot:
                 print(f"💥 Ошибка при переводе")
                 return False
         else:
-            print(f"⏱️ Баланс недостаточен для перевода (нужно > 2 TRX, чтобы оставить 1.21)")
+            print(f"⏱️ Баланс недостаточен для перевода (нужно > 2 TRX, чтобы оставить 0.81)")
             return True
 
 def main():
